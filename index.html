@@ -334,6 +334,17 @@
         radial-gradient(ellipse 50% 40% at 20% 80%, rgba(200,162,68,0.04) 0%, transparent 60%),
         radial-gradient(ellipse 40% 40% at 80% 60%, rgba(200,162,68,0.03) 0%, transparent 60%);
     }
+    .welcome-video-bg {
+      position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 0;
+    }
+    .welcome-video-bg video {
+      width: 100%; height: 100%; object-fit: cover;
+      opacity: 0.25;
+    }
+    .welcome-video-bg::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to bottom, var(--bg-void) 0%, transparent 20%, transparent 80%, var(--bg-void) 100%);
+    }
     .welcome-dot-grid {
       position: absolute; inset: 0; pointer-events: none;
       background-image: radial-gradient(circle, rgba(200,162,68,0.1) 1px, transparent 1px);
@@ -1673,6 +1684,11 @@
 
   <!-- ─── WELCOME ────────────────────────────── -->
   <section id="welcome">
+    <div class="welcome-video-bg">
+      <video autoplay muted loop playsinline>
+        <source src="welcome-video.mp4" type="video/mp4">
+      </video>
+    </div>
     <div class="welcome-bg"></div>
     <div class="welcome-dot-grid"></div>
     <div class="welcome-lines"></div>

@@ -1,0 +1,69 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#111122"/>
+      <stop offset="100%" stop-color="#080812"/>
+    </linearGradient>
+    <linearGradient id="gold-v" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#7A5F1F"/>
+      <stop offset="45%" stop-color="#C8A244"/>
+      <stop offset="100%" stop-color="#F0D47A"/>
+    </linearGradient>
+    <linearGradient id="bdr" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#C8A244" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#E8C767" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#C8A244" stop-opacity="0.2"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="200" height="200" rx="36" fill="url(#bg)"/>
+
+  <!-- Border -->
+  <rect x="2" y="2" width="196" height="196" rx="34" fill="none" stroke="url(#bdr)" stroke-width="2.5"/>
+
+  <!-- Corner accents -->
+  <path d="M 28,8 L 8,8 L 8,28" fill="none" stroke="#C8A244" stroke-width="1.5" stroke-opacity="0.4" stroke-linecap="round"/>
+  <path d="M 172,8 L 192,8 L 192,28" fill="none" stroke="#C8A244" stroke-width="1.5" stroke-opacity="0.4" stroke-linecap="round"/>
+  <path d="M 28,192 L 8,192 L 8,172" fill="none" stroke="#C8A244" stroke-width="1.5" stroke-opacity="0.4" stroke-linecap="round"/>
+  <path d="M 172,192 L 192,192 L 192,172" fill="none" stroke="#C8A244" stroke-width="1.5" stroke-opacity="0.4" stroke-linecap="round"/>
+
+  <!-- MICKY'S text -->
+  <text x="100" y="23"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="12.5" font-weight="700"
+    letter-spacing="0.22em" text-anchor="middle"
+    fill="#C8A244">MICKY'S</text>
+
+  <!-- Top separator -->
+  <line x1="36" y1="31" x2="164" y2="31" stroke="#C8A244" stroke-width="0.5" stroke-opacity="0.3"/>
+
+  <!-- Castle subtle fill -->
+  <path d="M 30,152 L 30,56 L 39,56 L 39,66 L 47,66 L 47,56 L 56,56 L 56,152 L 64,152 L 64,40 L 80,40 L 80,54 L 92,54 L 92,40 L 108,40 L 108,54 L 120,54 L 120,40 L 136,40 L 136,152 L 144,152 L 144,56 L 153,56 L 153,66 L 161,66 L 161,56 L 170,56 L 170,152 L 113,152 Q 100,133 87,152 L 30,152 Z"
+    fill="rgba(200,162,68,0.07)" stroke="none"/>
+
+  <!-- Castle outline -->
+  <path d="M 30,152 L 30,56 L 39,56 L 39,66 L 47,66 L 47,56 L 56,56 L 56,152 L 64,152 L 64,40 L 80,40 L 80,54 L 92,54 L 92,40 L 108,40 L 108,54 L 120,54 L 120,40 L 136,40 L 136,152 L 144,152 L 144,56 L 153,56 L 153,66 L 161,66 L 161,56 L 170,56 L 170,152 L 113,152 Q 100,133 87,152 L 30,152 Z"
+    fill="none" stroke="url(#gold-v)" stroke-width="2.2" stroke-linejoin="miter"
+    filter="url(#glow)"/>
+
+  <!-- Arrow slit window -->
+  <rect x="98" y="68" width="4" height="38" rx="2" fill="#C8A244" opacity="0.4"/>
+
+  <!-- Ground line -->
+  <line x1="22" y1="158" x2="178" y2="158" stroke="#C8A244" stroke-width="1" stroke-opacity="0.2" stroke-linecap="round"/>
+
+  <!-- Bottom separator -->
+  <line x1="36" y1="167" x2="164" y2="167" stroke="#C8A244" stroke-width="0.5" stroke-opacity="0.3"/>
+
+  <!-- GOLD TRADING text -->
+  <text x="100" y="182"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="10" font-weight="400"
+    letter-spacing="0.28em" text-anchor="middle"
+    fill="#C8A244" opacity="0.75">GOLD TRADING</text>
+</svg>

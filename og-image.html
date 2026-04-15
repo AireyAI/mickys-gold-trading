@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500&display=swap');
+
+  body {
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+    background: #04040A;
+    font-family: 'DM Sans', sans-serif;
+    position: relative;
+  }
+
+  /* Noise texture */
+  .noise {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.4;
+    z-index: 1;
+  }
+
+  /* Radial glows */
+  .glow-left {
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,162,68,0.12) 0%, transparent 70%);
+    top: -200px;
+    left: -150px;
+    z-index: 0;
+  }
+  .glow-right {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,162,68,0.08) 0%, transparent 70%);
+    bottom: -100px;
+    right: 100px;
+    z-index: 0;
+  }
+
+  /* Grid lines */
+  .grid {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background-image:
+      linear-gradient(rgba(200,162,68,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200,162,68,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  /* Border */
+  .border-frame {
+    position: absolute;
+    inset: 20px;
+    border: 1px solid rgba(200,162,68,0.18);
+    border-radius: 16px;
+    z-index: 2;
+  }
+
+  /* Corner accents */
+  .corner {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    z-index: 3;
+  }
+  .corner-tl { top: 28px; left: 28px; border-top: 2px solid #C8A244; border-left: 2px solid #C8A244; }
+  .corner-tr { top: 28px; right: 28px; border-top: 2px solid #C8A244; border-right: 2px solid #C8A244; }
+  .corner-bl { bottom: 28px; left: 28px; border-bottom: 2px solid #C8A244; border-left: 2px solid #C8A244; }
+  .corner-br { bottom: 28px; right: 28px; border-bottom: 2px solid #C8A244; border-right: 2px solid #C8A244; }
+
+  /* Main content */
+  .content {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    padding: 0 80px;
+    gap: 80px;
+  }
+
+  /* Left: text */
+  .left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #C8A244;
+    margin-bottom: 18px;
+    opacity: 0.85;
+  }
+
+  .eyebrow span {
+    display: inline-block;
+    width: 28px;
+    height: 1px;
+    background: #C8A244;
+    vertical-align: middle;
+    margin-right: 10px;
+    opacity: 0.7;
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 96px;
+    font-weight: 700;
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    color: #F5EDD6;
+    margin-bottom: 10px;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: #C8A244;
+  }
+
+  .subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(245,237,214,0.55);
+    margin-top: 16px;
+    letter-spacing: 0.03em;
+    line-height: 1.4;
+  }
+
+  .tags {
+    display: flex;
+    gap: 10px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    padding: 6px 14px;
+    border: 1px solid rgba(200,162,68,0.3);
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(200,162,68,0.8);
+    letter-spacing: 0.06em;
+    background: rgba(200,162,68,0.05);
+  }
+
+  /* Right: logo + stats */
+  .right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .logo-wrap {
+    width: 160px;
+    height: 160px;
+    border-radius: 36px;
+    background: linear-gradient(135deg, #111122 0%, #080812 100%);
+    border: 1px solid rgba(200,162,68,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:
+      0 0 40px rgba(200,162,68,0.15),
+      0 20px 60px rgba(0,0,0,0.6);
+  }
+
+  .logo-wrap svg {
+    width: 120px;
+    height: 120px;
+  }
+
+  .stats {
+    display: flex;
+    gap: 20px;
+  }
+
+  .stat {
+    text-align: center;
+    padding: 14px 20px;
+    background: rgba(200,162,68,0.06);
+    border: 1px solid rgba(200,162,68,0.14);
+    border-radius: 10px;
+  }
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #C8A244;
+    line-height: 1;
+  }
+
+  .stat-lbl {
+    font-size: 10px;
+    font-weight: 400;
+    color: rgba(245,237,214,0.4);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  /* Bottom bar */
+  .bottom-bar {
+    position: absolute;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .bottom-bar span {
+    font-size: 11px;
+    color: rgba(200,162,68,0.4);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: rgba(200,162,68,0.3);
+  }
+</style>
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="glow-left"></div>
+  <div class="glow-right"></div>
+  <div class="grid"></div>
+  <div class="border-frame"></div>
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+
+  <div class="content">
+    <div class="left">
+      <p class="eyebrow"><span></span>Free XAU/USD Signals Group</p>
+      <h1>Micky's Gold<br><em>Trading</em></h1>
+      <p class="subtitle">Free XAU/USD signals, education<br>& live Zoom sessions</p>
+      <div class="tags">
+        <span class="tag">Free Signals</span>
+        <span class="tag">Free Education</span>
+        <span class="tag">3× Weekly Zoom</span>
+      </div>
+    </div>
+    <div class="right">
+      <div class="logo-wrap">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="og-bg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#111122"/>
+              <stop offset="100%" stop-color="#080812"/>
+            </linearGradient>
+            <linearGradient id="og-gold" x1="0" y1="1" x2="0" y2="0">
+              <stop offset="0%" stop-color="#7A5F1F"/>
+              <stop offset="45%" stop-color="#C8A244"/>
+              <stop offset="100%" stop-color="#F0D47A"/>
+            </linearGradient>
+            <filter id="og-glow">
+              <feGaussianBlur stdDeviation="3" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <path d="M 28,158 L 28,50 L 39,50 L 39,62 L 47,62 L 47,50 L 58,50 L 58,158 L 65,158 L 65,35 L 81,35 L 81,52 L 92,52 L 92,35 L 108,35 L 108,52 L 119,52 L 119,35 L 135,35 L 135,158 L 142,158 L 142,50 L 153,50 L 153,62 L 161,62 L 161,50 L 172,50 L 172,158 L 113,158 Q 100,110 87,158 L 28,158 Z" fill="rgba(200,162,68,0.07)" stroke="none"/>
+          <path d="M 28,158 L 28,50 L 39,50 L 39,62 L 47,62 L 47,50 L 58,50 L 58,158 L 65,158 L 65,35 L 81,35 L 81,52 L 92,52 L 92,35 L 108,35 L 108,52 L 119,52 L 119,35 L 135,35 L 135,158 L 142,158 L 142,50 L 153,50 L 153,62 L 161,62 L 161,50 L 172,50 L 172,158 L 113,158 Q 100,110 87,158 L 28,158 Z" fill="none" stroke="url(#og-gold)" stroke-width="3" stroke-linejoin="miter" filter="url(#og-glow)"/>
+          <rect x="98" y="75" width="4" height="45" rx="2" fill="#C8A244" opacity="0.4"/>
+          <line x1="22" y1="163" x2="178" y2="163" stroke="#C8A244" stroke-width="1" stroke-opacity="0.2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-num">2K+</div>
+          <div class="stat-lbl">Members</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">Free</div>
+          <div class="stat-lbl">Always</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-bar">
+    <span>t.me/mickysgoldtrading</span>
+    <div class="dot"></div>
+    <span>Micky's Gold Trading</span>
+  </div>
+</body>
+</html>

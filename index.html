@@ -1016,40 +1016,6 @@
     .zoom-time { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-muted); letter-spacing: 0.06em; }
     .zoom-topic { font-size: 13px; color: var(--text-secondary); line-height: 1.55; }
 
-    /* ─── PARTNERSHIP ──────────────────────────── */
-    #partnership {
-      position: relative; z-index: 1; padding: 120px 52px;
-      background: var(--bg-deep);
-      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-    }
-    .partnership-inner {
-      max-width: 900px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 72px 1fr;
-      align-items: center; gap: 48px;
-    }
-    .partner-block { display: flex; flex-direction: column; gap: 10px; }
-    .partner-block.right { text-align: right; align-items: flex-end; }
-    .partner-eyebrow { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); }
-    .partner-name { font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 600; letter-spacing: -0.01em; line-height: 1; color: var(--text-primary); }
-    .partner-name.gold { color: var(--gold); }
-    .partner-sub { font-size: 12px; color: var(--text-muted); }
-    .partner-x-wrap { display: flex; flex-direction: column; align-items: center; gap: 8px; }
-    .partner-x { font-family: 'Cormorant Garamond', serif; font-size: 52px; font-weight: 300; color: var(--gold); opacity: 0.6; line-height: 1; }
-    .partner-x-label { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-muted); }
-    .partner-note {
-      grid-column: 1/-1; margin-top: 32px;
-      padding: 32px 44px;
-      background: var(--gold-faint); border: 1px solid var(--border-bright);
-      border-radius: 10px; display: flex; align-items: center; gap: 20px;
-    }
-    .partner-note-icon {
-      width: 44px; height: 44px; flex-shrink: 0;
-      background: linear-gradient(135deg, var(--gold), var(--gold-bright));
-      border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    }
-    .partner-note-icon svg { width: 18px; height: 18px; fill: var(--bg-void); }
-    .partner-note-text { font-size: 14px; line-height: 1.65; color: var(--text-secondary); }
-    .partner-note-text strong { color: var(--gold); font-weight: 600; }
 
     /* ─── MEET THE TEAM ────────────────────────── */
     #team { position: relative; z-index: 1; padding: 120px 52px; overflow: hidden; }
@@ -1569,15 +1535,11 @@
       .stat-cell { padding: 36px 20px; }
       .features-bottom-grid { grid-template-columns: 1fr; }
       .testimonials-grid { grid-template-columns: 1fr; }
-      .partnership-inner { grid-template-columns: 1fr; gap: 24px; }
-      .partner-block.right { text-align: left; align-items: flex-start; }
-      .partner-x-wrap { flex-direction: row; justify-content: flex-start; }
-      .partner-note { flex-direction: column; text-align: center; }
       .zoom-grid { grid-template-columns: 1fr; max-width: 380px; }
       .footer-top { flex-direction: column; }
       .footer-bottom { flex-direction: column; text-align: center; }
       .footer-disclaimer { text-align: center; }
-      #features, #testimonials, #zoom, #partnership, #join { padding: 80px 24px; }
+      #features, #testimonials, #zoom, #join { padding: 80px 24px; }
     }
     @media (max-width: 520px) {
       #stats { grid-template-columns: repeat(2,1fr); }
@@ -1654,8 +1616,6 @@
       /* Team — tighter */
       #team { padding: 60px 20px; }
 
-      /* Partnership — tighter */
-      .partner-name { font-size: 28px; }
 
       /* About — tighter */
       #about { padding: 60px 20px; }
@@ -1776,7 +1736,6 @@
       <span class="welcome-tag"><span class="welcome-tag-dot"></span>Free Signals Daily</span>
       <span class="welcome-tag"><span class="welcome-tag-dot"></span>3 Zoom Calls / Week</span>
       <span class="welcome-tag"><span class="welcome-tag-dot"></span>Free Education</span>
-      <span class="welcome-tag"><span class="welcome-tag-dot"></span>Partner: Blakey Trades</span>
     </div>
 
     <a href="#hero" class="welcome-cta">
@@ -1800,7 +1759,6 @@
       <li><a href="#zoom">Zoom Calls</a></li>
       <li><a href="#testimonials">Members</a></li>
       <li><a href="#team">The Team</a></li>
-      <li><a href="#partnership">Partnership</a></li>
       <li><a href="#about">About</a></li>
     </ul>
     <div class="nav-right">
@@ -1825,7 +1783,6 @@
     <a href="#zoom" class="mob-link">Zoom Calls</a>
     <a href="#testimonials" class="mob-link">Members</a>
     <a href="#team" class="mob-link">The Team</a>
-    <a href="#partnership" class="mob-link">Partnership</a>
     <a href="#about" class="mob-link">About</a>
     <a href="https://t.me/micky_trading_link" class="btn-gold" style="margin-top:8px;">Join Free on Telegram</a>
   </div>
@@ -2188,36 +2145,6 @@
   </section>
   <div class="section-rule"></div>
 
-  <!-- ─── PARTNERSHIP ───────────────────────── -->
-  <section id="partnership">
-    <div class="section-header reveal">
-      <span class="eyebrow">Official Partnership</span>
-      <h2 class="section-title">Proud Partners With Blakey Trades</h2>
-    </div>
-    <div class="partnership-inner">
-      <div class="partner-block reveal">
-        <span class="partner-eyebrow">Signals Group</span>
-        <div class="partner-name gold">Micky's Gold<br/>Trading</div>
-        <span class="partner-sub">XAU/USD Signals &amp; Education</span>
-      </div>
-      <div class="partner-x-wrap reveal">
-        <div class="partner-x">×</div>
-        <div class="partner-x-label">Official Partner</div>
-      </div>
-      <div class="partner-block right reveal">
-        <span class="partner-eyebrow">Trading Partner</span>
-        <div class="partner-name">Blakey<br/>Trades</div>
-        <span class="partner-sub">Professional Trading Mentorship</span>
-      </div>
-      <div class="partner-note reveal">
-        <div class="partner-note-icon">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
-        <p class="partner-note-text">Micky's Gold Trading is proud to be in <strong>official partnership with Blakey Trades</strong> — bringing together two trusted names in gold trading to deliver an unmatched learning and signals experience for the community.</p>
-      </div>
-    </div>
-  </section>
-  <div class="section-rule"></div>
 
   <!-- ─── ABOUT / ORIGIN ─────────────────────── -->
   <section id="about">
@@ -2363,10 +2290,6 @@
         <div class="faq-a"><div class="faq-a-inner">Typically 8–12 signals per week depending on market conditions. We only send signals when there's a high-quality setup — we don't force trades just to fill the group.</div></div>
       </div>
       <div class="faq-item reveal">
-        <button class="faq-q"><span class="faq-q-text">Who is Micky's Gold Trading partnered with?</span><span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
-        <div class="faq-a"><div class="faq-a-inner">We are in official partnership with Blakey Trades — a respected name in professional trading mentorship. This partnership enhances the quality of education and analysis available to our members.</div></div>
-      </div>
-      <div class="faq-item reveal">
         <button class="faq-q"><span class="faq-q-text">When are the Zoom calls?</span><span class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
         <div class="faq-a"><div class="faq-a-inner">Every Monday and Wednesday at 19:00 GMT, and Sunday at 20:00 GMT. Recordings are sent to all members so you never miss a session.</div></div>
       </div>
@@ -2411,13 +2334,11 @@
         <a href="#zoom">Zoom Calls</a>
         <a href="#testimonials">Members</a>
         <a href="#team">The Team</a>
-        <a href="#partnership">Partnership</a>
         <a href="https://t.me/micky_trading_link">Join Telegram</a>
       </div>
       <div class="footer-col">
         <div class="footer-col-title">More</div>
         <a href="#about">Our Story</a>
-        <a href="#partnership">Blakey Trades</a>
         <a href="#faq">FAQ</a>
       </div>
     </div>
